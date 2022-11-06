@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Email and id, coexist so that later on could be used phone, or any other field to identify a user
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  events    Event[]
+}
+
+// there could be many events on the same place (building)
+// so address and datetime are not both unique because of that
+model Event {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  name      String
+  address   String
+  datetime  DateTime
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+}
