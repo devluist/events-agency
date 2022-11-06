@@ -81,10 +81,10 @@ export class EventService {
             },
             // TODO: complete this section, maybe replace take and skip
             links: {
-                first: "http://localhost:3000/users?take=10",
+                first: "http://localhost:3000/events?take=10",
                 previous: "",
                 next: "",
-                last: "http://localhost:3000/users?skip=1&take=10"
+                last: "http://localhost:3000/events?skip=1&take=10"
             }
         }
     }

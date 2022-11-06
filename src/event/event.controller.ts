@@ -20,8 +20,8 @@ export class EventController {
     @Get()
     fetchUserEvents(
         @GetUser() user: User,
-        @Query('skip') skip: string = '0',
-        @Query('take') take: string = '10'
+        @Query('skip') skip: string = '0', // default pagination values "page" 0
+        @Query('take') take: string = '10' // defauult pagination values "limit" 10 per page
     ) {
         const data = {
             userId: user.id,

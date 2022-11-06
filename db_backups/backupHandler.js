@@ -57,7 +57,7 @@ async function backup() {
 
 function startSchedule() {
 	cron.schedule(
-		'*/1 * * * *',
+		'0 0 * * *', // every midnight
 		() => {
 			backup();
 			//const fileNameGzip = `${fileName}.tar.gz`;

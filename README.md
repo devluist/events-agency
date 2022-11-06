@@ -7,6 +7,7 @@
 - Argon
 - Validation Pipes (class-validator, class-transformer)
 - DotEnv
+- JWT
 
 
 ### Folder Distribution
@@ -14,9 +15,6 @@
 There are 2 projects:
 - REST API made with nestjs
 - the database backup script inside `./db_backups` folder
-
-Inside `src`
-- ./src/shared:  Here will live shared components, libs to be used by different modules
 
 
 ### Missing task
@@ -42,6 +40,7 @@ cp .env.example .env
 
 ```bash
 docker-compose up -d
+npx prisma migrate dev
 npm run start
 ```
 
@@ -51,6 +50,55 @@ npm run start
 cd db_bakcups
 node index.js
 ```
+
+## Endpoints
+
+- POST localhost:3000/auth/register
+```
+{
+    "email": "aaa@bbb.com",
+    "password": "1234"
+}
+```
+
+- POST localhost:3000/auth/login
+
+```
+{
+    "email": "aaa@bbb.com",
+    "password": "1234"
+}
+```
+
+// copy paste access_token to create and list a Event
+
+- POST localhost:3000/events
+
+```
+{
+    "name": "Event Prueba 1",
+    "address": "abajo y a la izquierda con calle abajo",
+    "datetime": "2022-11-05T11:28:50Z"
+}
+```
+
+- GET localhost:3000/events
+
+- GET localhost:3000/events?skip=0&take=10
+
+```
+    // TODO: this simplistic pagination has to be improved on the result, in "links" object section
+
+    // also rename skip and take to be concise with page analogy
+    
+    // also remove user password from results
+```
+
+## Notes
+
+- By default the jwt tokens last 15 min to expire
+
+
 
 # Requirements
 
