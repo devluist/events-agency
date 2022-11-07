@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { DbModule } from './db/db.module';
 import { UserModule } from './user/user.module';
 import { EventModule } from './event/event.module';
-import { DbModule } from './db/db.module';
 import { AuthModule } from './auth/auth.module';
-import { ScheduleModule } from '@nestjs/schedule';
 
 
 @Module({
@@ -12,11 +11,10 @@ import { ScheduleModule } from '@nestjs/schedule';
     ConfigModule.forRoot({
       isGlobal: true
     }),
-    ScheduleModule.forRoot(),
     DbModule,
     AuthModule,
-    UserModule,
-    EventModule
+    EventModule,
+    UserModule
   ],
 })
 export class AppModule {}

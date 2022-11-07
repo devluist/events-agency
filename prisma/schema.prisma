@@ -11,6 +11,8 @@ datasource db {
 }
 
 // Email and id, coexist so that later on could be used phone, or any other field to identify a user
+// One To Many = One user can have multiples Events
+// prisma requires to set a realationship with another entity by adding the other entity field
 model User {
   id        String   @id @default(uuid())
   email     String   @unique

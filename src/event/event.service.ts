@@ -1,7 +1,6 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { DbService } from 'src/db/db.service';
-import { UserDto } from 'src/user/dto';
 import { EventDto } from './dto';
 
 @Injectable()

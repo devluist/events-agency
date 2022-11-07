@@ -16,6 +16,8 @@ There are 2 projects:
 - REST API made with nestjs
 - the database backup script inside `./db_backups` folder
 
+- DB schema is defined at `./prisma/schema.prisma`
+
 
 ### Missing task
 
@@ -53,7 +55,10 @@ node index.js
 
 ## Endpoints
 
-- POST localhost:3000/auth/register
+* DOCUMENTATION localhost:4000/docs
+
+
+- POST localhost:4000/auth/register
 ```
 {
     "email": "aaa@bbb.com",
@@ -61,7 +66,7 @@ node index.js
 }
 ```
 
-- POST localhost:3000/auth/login
+- POST localhost:4000/auth/login
 
 ```
 {
@@ -72,7 +77,7 @@ node index.js
 
 // copy paste access_token to create and list a Event
 
-- POST localhost:3000/events
+- POST localhost:4000/events
 
 ```
 {
@@ -82,9 +87,9 @@ node index.js
 }
 ```
 
-- GET localhost:3000/events
+- GET localhost:4000/events
 
-- GET localhost:3000/events?skip=0&take=10
+- GET localhost:4000/events?skip=0&take=10
 
 ```
     // TODO: this simplistic pagination has to be improved on the result, in "links" object section

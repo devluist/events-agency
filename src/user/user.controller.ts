@@ -4,22 +4,30 @@ import { UserService } from './user.service';
 import { JwtGuard } from 'src/auth/guard';
 import { GetUser } from 'src/auth/decorator';
 import { User } from '@prisma/client';
+import { ApiAcceptedResponse, ApiBearerAuth, ApiForbiddenResponse, ApiTags } from '@nestjs/swagger';
 
 
+@ApiTags('User')
+@UseGuards(JwtGuard)
+@ApiBearerAuth()
 @Controller('users')
 export class UserController {
 
     constructor(private userService: UserService) {}
 
-    @UseGuards(JwtGuard)
     @Get('profile')
-    userProfile(@GetUser() user: User) {
+    @ApiAcceptedResponse({
+        description: "Fetch data associated with logged user"
+    })
+    @ApiForbiddenResponse({
+        description: "You must login first"
+    })
+    userProfile(@GetUser() user: UserDto) {
         return user;
     }
 
     @Get()
-    fetchAllUsers() {
-        // TODO: pagination
+    fetchAllUsers()  {
         return this.userService.findAll();
     }
 
@@ -37,4 +45,5 @@ export class UserController {
     deleteUser(@Param('id') id: string) {
         return this.userService.remove(id);
     }
+
 }
