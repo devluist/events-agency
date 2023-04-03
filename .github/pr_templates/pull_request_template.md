@@ -1,6 +1,4 @@
-## __CU-yourTicketId__
-
-### Type of change
+### Type of changes
 
 - [ ] Hotfix
 - [ ] Fix
